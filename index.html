@@ -149,6 +149,8 @@ body{top:0 !important;}
 .price{float:right; font-family:var(--font-head); font-size:1.2rem; color:var(--brown);}
 .trip-opts{display:grid; gap:10px; margin-top:10px;}
 .trip-opts .btn{text-align:center;}
+.spots{margin-top:18px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.spots .card-image{height:200px;}
 .route-box{border-radius:12px; overflow:hidden; margin:0 0 14px;}
 .route-box svg{display:block; width:100%; height:auto;}
 .foot-logo{width:44px; height:44px; border-radius:10px; margin:0 auto 10px; background:#fff;}
@@ -509,10 +511,19 @@ dialog.modal::backdrop{background:rgba(31,36,32,.65);}
       </div>
 
       <h3 style="margin-top:44px; font-size:1.4rem;">Nuestros spots</h3>
-      <div class="contact-list" style="margin-top:14px;">
-        <a href="https://maps.app.goo.gl/LMdm9FmYuYpgvSvy8" target="_blank" rel="noopener">📍 Lagoa do Cauipe</a>
-        <a href="https://maps.app.goo.gl/8iRgDaf1Pj8oa96PA" target="_blank" rel="noopener">📍 Canoa Quebrada</a>
-        <a href="https://maps.app.goo.gl/4ZRp9RpTCticGanU6" target="_blank" rel="noopener">📍 Praia do Cumbuco</a>
+      <div class="card-grid spots">
+        <a class="card card--photo spot" href="https://maps.app.goo.gl/LMdm9FmYuYpgvSvy8" target="_blank" rel="noopener">
+          <div class="card-image"><img src="img/trip-lagoa.jpg" alt="Lagoa do Cauipe" /></div>
+          <h3>📍 Lagoa do Cauipe</h3><p>Ver en Google Maps</p>
+        </a>
+        <a class="card card--photo spot" href="https://maps.app.goo.gl/8iRgDaf1Pj8oa96PA" target="_blank" rel="noopener">
+          <div class="card-image"><img src="img/trip-canoa.jpg" alt="Canoa Quebrada" /></div>
+          <h3>📍 Canoa Quebrada</h3><p>Ver en Google Maps</p>
+        </a>
+        <a class="card card--photo spot" href="https://maps.app.goo.gl/4ZRp9RpTCticGanU6" target="_blank" rel="noopener">
+          <div class="card-image"><img src="img/cumbuco.jpg" alt="Praia do Cumbuco al atardecer" style="object-position:center 72%" /></div>
+          <h3>📍 Praia do Cumbuco</h3><p>Ver en Google Maps</p>
+        </a>
       </div>
 
       <p class="section-lead" style="margin-top:36px;">Precios desde 910 U$D — consultanos por WhatsApp para armar tu trip a medida.</p>
