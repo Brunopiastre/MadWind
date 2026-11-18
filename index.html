@@ -508,6 +508,13 @@ dialog.modal::backdrop{background:rgba(31,36,32,.65);}
         </article>
       </div>
 
+      <h3 style="margin-top:44px; font-size:1.4rem;">Nuestros spots</h3>
+      <div class="contact-list" style="margin-top:14px;">
+        <a href="https://maps.app.goo.gl/LMdm9FmYuYpgvSvy8" target="_blank" rel="noopener">📍 Lagoa do Cauipe</a>
+        <a href="https://maps.app.goo.gl/8iRgDaf1Pj8oa96PA" target="_blank" rel="noopener">📍 Canoa Quebrada</a>
+        <a href="https://maps.app.goo.gl/4ZRp9RpTCticGanU6" target="_blank" rel="noopener">📍 Praia do Cumbuco</a>
+      </div>
+
       <p class="section-lead" style="margin-top:36px;">Precios desde 910 U$D — consultanos por WhatsApp para armar tu trip a medida.</p>
     </div>
   </section>
@@ -620,7 +627,7 @@ const TRIPS = {
   lagoa: {
     name: 'Lagoa do Cauipe',
     place: 'Lagoa do Cauipe, Cumbuco, Ceará, Brasil',
-    mapQuery: 'Lagoa do Cauipe, Ceará, Brasil',
+    mapUrl: 'https://maps.app.goo.gl/LMdm9FmYuYpgvSvy8',
     img: 'img/trip-lagoa.jpg',
     intro: 'Una laguna de aguas calmas cerca de Cumbuco, ideal para aprender y progresar.',
     options: [
@@ -633,7 +640,7 @@ const TRIPS = {
   canoa: {
     name: 'Canoa Quebrada',
     place: 'Canoa Quebrada, Aracati, Ceará, Brasil',
-    mapQuery: 'Canoa Quebrada, Aracati, Ceará, Brasil',
+    mapUrl: 'https://maps.app.goo.gl/8iRgDaf1Pj8oa96PA',
     img: 'img/trip-canoa.jpg',
     intro: 'Dunas, acantilados y playas del litoral de Ceará, con viento todo el año.',
     options: [
@@ -836,7 +843,7 @@ function openCourse(key) {
 /* ---- Trips ---- */
 function renderTrip() {
   const t = TRIPS[state.trip];
-  const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.mapQuery)}`;
+  const map = t.mapUrl;
   const notes = t.options.filter(o => o.note).map(o => o.note).join(' · ');
 
   body.innerHTML = `
