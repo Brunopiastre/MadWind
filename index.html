@@ -114,6 +114,28 @@ ul{list-style:none; margin:0; padding:0;}
   box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
 
+/* ---------- BANNER ---------- */
+.banner{position:relative; height:46vh; min-height:280px; overflow:hidden;}
+.banner img{width:100%; height:100%; object-fit:cover;}
+.banner::after{content:""; position:absolute; inset:0; background:linear-gradient(0deg, rgba(31,36,32,.55), rgba(31,36,32,0) 60%);}
+.banner-caption{position:absolute; left:0; right:0; bottom:22px; text-align:center; color:var(--white); font-family:var(--font-head); font-size:clamp(1.2rem,3vw,2rem); letter-spacing:.03em; text-shadow:0 1px 8px rgba(0,0,0,.5);}
+
+/* ---------- MINI GALLERY ---------- */
+.mini-gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-top:12px;}
+.mini-gallery img{width:100%; height:110px; object-fit:cover; border-radius:10px; transition:.25s;}
+.mini-gallery img:hover{transform:scale(1.04);}
+.card--photo .mini-gallery{padding:0 24px 24px;}
+
+/* ---------- ABOUT / TEAM ---------- */
+.about-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; text-align:left; margin:50px 0;}
+.about-photo{border-radius:var(--radius); overflow:hidden;}
+.about-photo img{width:100%; height:100%; object-fit:cover;}
+.about-copy h3{font-size:1.4rem; margin-bottom:10px;}
+.about-copy p{color:#4a473f; line-height:1.6; margin:0 0 14px;}
+@media (max-width:760px){
+  .about-grid{grid-template-columns:1fr;}
+}
+
 /* ---------- SECTIONS ---------- */
 .section{padding:90px 24px;}
 .section-alt{background:var(--cream-2);}
@@ -133,7 +155,13 @@ ul{list-style:none; margin:0; padding:0;}
 .card h3{font-size:1.25rem; margin-bottom:8px; color:var(--ink);}
 .card p{margin:0; color:#5b5848; font-size:.95rem; line-height:1.5;}
 
-.card--photo{padding:0; overflow:hidden;}
+.card--photo{padding:0; overflow:hidden; display:flex; flex-direction:column;}
+.card-actions{margin-top:auto; padding:0 24px 24px;}
+.btn-solid{background:var(--brown); border-color:var(--brown); color:var(--white);}
+.btn-solid:hover{background:var(--ink); border-color:var(--ink);}
+.btn-wa{background:#25D366; border-color:#25D366; color:var(--white);}
+.btn-wa:hover{background:#1ebe5a; border-color:#1ebe5a;}
+.card-actions .btn{padding:11px 24px;}
 .card-image{height:170px; overflow:hidden;}
 .card-image img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;}
 .card--photo:hover .card-image img{transform:scale(1.06);}
@@ -149,6 +177,43 @@ ul{list-style:none; margin:0; padding:0;}
   transition:.2s;
 }
 .contact-list a:hover{background:var(--ink); color:var(--white);}
+
+/* ---------- MODAL (cursos y trips) ---------- */
+dialog.modal{
+  border:none; border-radius:18px; padding:0; width:calc(100% - 32px); max-width:560px;
+  max-height:90vh; overflow:auto; background:var(--cream); color:var(--ink);
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+dialog.modal::backdrop{background:rgba(31,36,32,.65);}
+.modal-x{
+  position:absolute; top:12px; right:14px; z-index:2; width:36px; height:36px; border-radius:50%;
+  border:none; background:rgba(255,255,255,.9); font-size:1.4rem; line-height:1; cursor:pointer; color:var(--ink);
+}
+.modal-body{padding:30px 28px 28px;}
+.modal-body h3{font-size:1.6rem; margin-bottom:6px;}
+.modal-sub{color:#5b5848; margin:0 0 18px; font-size:.95rem;}
+.modal-step{font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--brown-light); font-weight:600; margin-bottom:6px;}
+.option{
+  display:block; width:100%; text-align:left; padding:16px 18px; margin-bottom:10px; font:inherit; cursor:pointer;
+  background:var(--white); border:1px solid rgba(0,0,0,.12); border-radius:12px; color:var(--ink); transition:.15s;
+}
+.option:hover{border-color:var(--brown); background:#faf7f2;}
+.option strong{display:block; font-family:var(--font-head); font-size:1.2rem; letter-spacing:.02em;}
+.option span{color:#5b5848; font-size:.9rem;}
+.summary{background:var(--white); border:1px solid rgba(0,0,0,.08); border-radius:12px; padding:16px 18px; margin:0 0 18px; line-height:1.6;}
+.modal-actions{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+.link-back{background:none; border:none; font:inherit; color:var(--brown); cursor:pointer; text-decoration:underline; padding:8px 4px;}
+.trip-hero{height:190px; overflow:hidden;}
+.trip-hero img{width:100%; height:100%; object-fit:cover;}
+.trip-place{margin:0 0 16px; color:#4a473f;}
+.trip-place a{color:var(--brown); text-decoration:underline;}
+.modal-body h4{font-family:var(--font-head); font-size:1.1rem; letter-spacing:.03em; margin:18px 0 8px;}
+.chips{display:flex; gap:8px; flex-wrap:wrap;}
+.chip{padding:8px 16px; border-radius:30px; border:1px solid var(--brown); background:var(--white); color:var(--brown); font:inherit; font-weight:600; cursor:pointer;}
+.chip[aria-pressed="true"]{background:var(--brown); color:var(--white);}
+.hint{font-size:.85rem; color:#7a7668; margin:8px 0 0;}
+.includes{margin:0; padding-left:20px; list-style:disc; line-height:1.7; color:#4a473f;}
+.modal-body .modal-actions{margin-top:22px;}
 
 /* ---------- FOOTER ---------- */
 .site-footer{text-align:center; padding:28px 24px; font-size:.85rem; color:#7a7668; background:var(--cream-2); border-top:1px solid rgba(0,0,0,.06);}
@@ -223,10 +288,16 @@ ul{list-style:none; margin:0; padding:0;}
       </a>
     </div>
 
-    <a class="whatsapp-float" href="https://wa.me/5492612195320" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+    <a class="whatsapp-float" data-wa href="#" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.6 14.3c-.2.6-1.3 1.2-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.8 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1.2.1 1.6.8 1.9 1 .3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg>
     </a>
   </section>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <img src="img/banner.jpg" alt="Mad Wind Experience" />
+    <p class="banner-caption">Creamos riders. Construimos experiencias.</p>
+  </div>
 
   <!-- SOMOS MAD WIND -->
   <section class="section">
@@ -240,7 +311,7 @@ ul{list-style:none; margin:0; padding:0;}
         <article class="card card--photo">
           <div class="card-image"><img src="img/instructores.jpg" alt="Instructor enseñando kitesurf" /></div>
           <h3>Instructores profesionales</h3>
-          <p>Equipo certificado, enfocado en tu seguridad y en que progreses a tu ritmo.</p>
+          <p>Equipo profesional, enfocado en tu seguridad y en que progreses a tu ritmo.</p>
         </article>
         <article class="card card--photo">
           <div class="card-image"><img src="img/destinos.jpg" alt="Spot de windfoil en Cumbuco" /></div>
@@ -261,32 +332,53 @@ ul{list-style:none; margin:0; padding:0;}
     <div class="section-inner">
       <span class="eyebrow">Aprendé con nosotros</span>
       <h2>Clases y Downwinds</h2>
-      <p class="section-lead">Cursos para todo el mundo: kitesurf, windfoil y parapente, con instructores profesionales y equipo incluido, pensados para cada nivel.</p>
+      <p class="section-lead">Cursos para todo el mundo: kitesurf, windfoil y parapente, con instructores profesionales, pensados para cada nivel. Elegí tu deporte, tu curso y tu nivel, y nos escribís directo por WhatsApp.</p>
 
       <div class="card-grid">
         <article class="card card--photo">
           <div class="card-image"><img src="img/kitesurf.jpg" alt="Clase de kitesurf, salto" /></div>
           <h3>Kitesurf</h3>
-          <p>Clases de iniciación y perfeccionamiento en los mejores spots de viento.</p>
+          <p>Clases de iniciación y perfeccionamiento en los mejores spots de viento, con Nico y el equipo de instructores.</p>
+          <div class="mini-gallery">
+            <img src="img/gallery-1.jpg" alt="Clase de kitesurf en el agua" />
+            <img src="img/gallery-2.jpg" alt="Clase de kitesurf" />
+            <img src="img/gallery-3.jpg" alt="Instructor enseñando body drag" />
+            <img src="img/gallery-4.jpg" alt="Instructor enseñando kitesurf" />
+          </div>
+          <div class="card-actions"><button class="btn btn-solid" type="button" data-course="kitesurf">Elegir curso</button></div>
         </article>
         <article class="card card--photo">
-          <div class="card-image"><img src="img/windfoil.jpg" alt="Windfoil sobre el agua" /></div>
+          <div class="card-image"><img src="img/windfoil.jpg" alt="Windfoil sobre el agua en Cumbuco" /></div>
           <h3>Windfoil</h3>
-          <p>Para quienes ya navegan y quieren subirse a volar sobre el agua.</p>
+          <p>Para quienes ya navegan y quieren subirse a volar sobre el agua, en los spots de Cumbuco.</p>
+          <div class="mini-gallery">
+            <img src="img/windfoil-2.jpg" alt="Windfoil en acción" />
+          </div>
+          <div class="card-actions"><button class="btn btn-solid" type="button" data-course="windfoil">Elegir curso</button></div>
         </article>
         <article class="card card--photo">
           <div class="card-image"><img src="img/parapente.jpg" alt="Parapente sobre las dunas" /></div>
           <h3>Parapente</h3>
           <p>Vuelos y clases para vivir el viento desde otra perspectiva.</p>
+          <div class="mini-gallery">
+            <img src="img/parapente-2.jpg" alt="Parapente en vuelo" />
+          </div>
+          <div class="card-actions"><button class="btn btn-solid" type="button" data-course="parapente">Elegir curso</button></div>
         </article>
         <article class="card card--photo">
           <div class="card-image"><img src="img/downwinds.jpg" alt="Downwind al atardecer" /></div>
           <h3>Downwinds</h3>
           <p>Recorridos guiados por nuestros instructores en Cumbuco y alrededores.</p>
+          <div class="card-actions"><button class="btn btn-solid" type="button" data-course="downwinds">Consultar downwind</button></div>
         </article>
       </div>
     </div>
   </section>
+
+  <!-- BANNER 2 -->
+  <div class="banner" style="height:32vh; min-height:200px;">
+    <img src="img/palmeras.jpg" alt="" />
+  </div>
 
   <!-- TRIPS -->
   <section id="trips" class="section">
@@ -300,11 +392,13 @@ ul{list-style:none; margin:0; padding:0;}
           <div class="card-image"><img src="img/trip-lagoa.jpg" alt="Lagoa do Cauipe" /></div>
           <h3>Lagoa do Cauipe</h3>
           <p>Spot clásico de kitesurf cerca de Cumbuco, ideal para todos los niveles.</p>
+          <div class="card-actions"><button class="btn btn-solid" type="button" data-trip="lagoa">Ver el trip</button></div>
         </article>
         <article class="card card--photo">
           <div class="card-image"><img src="img/trip-canoa.jpg" alt="Dunas de Canoa Quebrada" /></div>
           <h3>Canoa Quebrada</h3>
-          <p>Downwind entre dunas y playas, una de las rutas más lindas de la región.</p>
+          <p>Dunas y playas del litoral de Ceará, para volar en kitesurf y parapente.</p>
+          <div class="card-actions"><button class="btn btn-solid" type="button" data-trip="canoa">Ver el trip</button></div>
         </article>
       </div>
 
@@ -314,16 +408,32 @@ ul{list-style:none; margin:0; padding:0;}
 
   <!-- ACERCA DE -->
   <section id="acerca" class="section section-alt">
-    <div class="section-inner section-inner--narrow">
+    <div class="section-inner" style="max-width:860px;">
       <span class="eyebrow">Acerca de</span>
       <h2>MadWind — Cursos y Trips</h2>
       <p class="section-lead">Apasionados por los deportes de viento y la aventura, organizamos clases y trips de kitesurf, parapente y wingfoil en los mejores spots de Cumbuco, Brasil. Nuestro objetivo es que disfrutes al máximo.</p>
       <p class="section-lead">Cada viaje es 100% personalizado: vos elegís qué querés hacer y nosotros nos encargamos del resto. Coordinamos juntos por WhatsApp para que tu experiencia sea única y sin complicaciones.</p>
 
+      <div class="about-grid">
+        <div class="about-photo"><img src="img/nico.jpg" alt="Nico, instructor de Mad Wind" /></div>
+        <div class="about-copy">
+          <h3>Nico, tu instructor</h3>
+          <p>Al frente de las clases y los trips está Nico, instructor de Mad Wind, que te acompaña en cada sesión.</p>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-copy">
+          <h3>Un equipo grande</h3>
+          <p>Mad Wind creció como una comunidad: cada salida suma gente nueva, amigos y riders de todos los niveles compartiendo el mismo viento.</p>
+        </div>
+        <div class="about-photo"><img src="img/equipo.jpg" alt="Grupo de Mad Wind en la playa" /></div>
+      </div>
+
       <div class="contact-block">
         <h3>Contactanos</h3>
         <ul class="contact-list">
-          <li><a href="https://wa.me/5492612195320" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a data-wa href="#" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="#">Instagram</a></li>
           <li><a href="#">Facebook</a></li>
           <li><a href="mailto:info@madwind.net">info@madwind.net</a></li>
@@ -339,22 +449,202 @@ ul{list-style:none; margin:0; padding:0;}
   <p>© <span id="year"></span> Mad Wind Experience. Todos los derechos reservados.</p>
 </footer>
 
-<script>
-document.getElementById('year').textContent = new Date().getFullYear();
+<dialog id="modal" class="modal" aria-label="Detalle">
+  <button class="modal-x" type="button" id="modal-close" aria-label="Cerrar">×</button>
+  <div id="modal-body"></div>
+</dialog>
 
+<script>
+/* =====================================================================
+   CONFIGURACIÓN — todo lo que se edita está acá arriba
+   ===================================================================== */
+
+// WhatsApp que recibe los mensajes: código de país + área + número, sin "+" ni espacios.
+// TODO: reemplazar por el WhatsApp real de Mad Wind.
+const WA_NUMBER = '5492612195320';
+
+// Tipos de curso (los 3 que aparecen al elegir un deporte).
+// TODO: confirmar las horas reales de los cursos medio y avanzado.
+const COURSE_TYPES = [
+  { id: 'basico',   hours: '4 horas',  title: 'Curso de 4 horas',           desc: 'Para dar tus primeros pasos.' },
+  { id: 'completo', hours: '8 horas',  title: 'Curso de 8 horas',           desc: 'Más práctica para ganar autonomía.' },
+  { id: 'avanzado', hours: '12 horas', title: 'Curso avanzado de 12 horas', desc: 'Para perfeccionar tu técnica.' }
+];
+
+// Niveles del alumno. "phrase" es lo que se escribe en el mensaje de WhatsApp.
+const LEVELS = [
+  { id: 'principiante', label: 'Principiante', phrase: 'de principiante',      desc: 'Nunca lo probé o recién empiezo.' },
+  { id: 'intermedio',   label: 'Intermedio',   phrase: 'de nivel intermedio',  desc: 'Ya me manejo y quiero mejorar.' },
+  { id: 'avanzado',     label: 'Avanzado',     phrase: 'de nivel avanzado',    desc: 'Tengo experiencia y busco perfeccionarme.' }
+];
+
+// Deportes. courses:false = salta el paso de "tipo de curso" (solo pregunta el nivel).
+const SPORTS = {
+  kitesurf:  { name: 'Kitesurf',  noun: 'curso de Kitesurf',  courses: true  },
+  windfoil:  { name: 'Windfoil',  noun: 'curso de Windfoil',  courses: true  },
+  parapente: { name: 'Parapente', noun: 'curso de Parapente', courses: true  },
+  downwinds: { name: 'Downwinds', noun: 'downwind',           courses: false }
+};
+
+// Trips.
+// TODO: completar "includes" con lo que realmente incluye cada trip (alojamiento, traslados, equipo, etc.).
+const TRIPS = {
+  lagoa: {
+    name: 'Lagoa do Cauipe',
+    place: 'Lagoa do Cauipe, Cumbuco, Ceará, Brasil',
+    mapQuery: 'Lagoa do Cauipe, Ceará, Brasil',
+    img: 'img/trip-lagoa.jpg',
+    sports: ['Kitesurf', 'Windfoil'],
+    intro: 'Una laguna de aguas calmas cerca de Cumbuco, ideal para aprender y progresar.',
+    includes: ['Clases con instructores profesionales', 'Itinerario 100% personalizado', 'Coordinación completa por WhatsApp']
+  },
+  canoa: {
+    name: 'Canoa Quebrada',
+    place: 'Canoa Quebrada, Aracati, Ceará, Brasil',
+    mapQuery: 'Canoa Quebrada, Aracati, Ceará, Brasil',
+    img: 'img/trip-canoa.jpg',
+    sports: ['Kitesurf', 'Parapente'],
+    intro: 'Dunas, acantilados y playas del litoral de Ceará, con viento todo el año.',
+    includes: ['Clases con instructores profesionales', 'Itinerario 100% personalizado', 'Coordinación completa por WhatsApp']
+  }
+};
+
+/* =====================================================================
+   CÓDIGO
+   ===================================================================== */
+const waLink = text => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+
+document.getElementById('year').textContent = new Date().getFullYear();
+document.querySelectorAll('[data-wa]').forEach(a => { a.href = `https://wa.me/${WA_NUMBER}`; });
+
+// Menú móvil
 const toggle = document.getElementById('menu-toggle');
 const nav = document.getElementById('main-nav');
-
 toggle?.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('open');
   toggle.setAttribute('aria-expanded', String(isOpen));
 });
-
 nav?.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     nav.classList.remove('open');
     toggle?.setAttribute('aria-expanded', 'false');
   });
+});
+
+// Modal
+const dlg = document.getElementById('modal');
+const body = document.getElementById('modal-body');
+document.getElementById('modal-close').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+let state = {};
+
+/* ---- Cursos ---- */
+function renderCourse() {
+  const s = SPORTS[state.sport];
+  const total = s.courses ? 3 : 2;
+
+  if (s.courses && !state.course) {
+    body.innerHTML = `<div class="modal-body">
+      <div class="modal-step">Paso 1 de ${total}</div>
+      <h3>${s.name}</h3>
+      <p class="modal-sub">¿Qué curso querés hacer?</p>
+      ${COURSE_TYPES.map(c => `<button class="option" type="button" data-pick-course="${c.id}"><strong>${c.title}</strong><span>${c.desc}</span></button>`).join('')}
+    </div>`;
+    return;
+  }
+
+  if (!state.level) {
+    const step = s.courses ? 2 : 1;
+    body.innerHTML = `<div class="modal-body">
+      <div class="modal-step">Paso ${step} de ${total}</div>
+      <h3>${s.name}</h3>
+      <p class="modal-sub">¿Cuál es tu nivel?</p>
+      ${LEVELS.map(l => `<button class="option" type="button" data-pick-level="${l.id}"><strong>${l.label}</strong><span>${l.desc}</span></button>`).join('')}
+      ${s.courses ? '<div class="modal-actions"><button class="link-back" type="button" data-back>← Volver</button></div>' : ''}
+    </div>`;
+    return;
+  }
+
+  const level = LEVELS.find(l => l.id === state.level);
+  const course = COURSE_TYPES.find(c => c.id === state.course);
+  const msg = s.courses
+    ? `Hola, estoy interesado en un ${s.noun} de ${course.hours} ${level.phrase}.`
+    : `Hola, estoy interesado en un ${s.noun} ${level.phrase}.`;
+
+  body.innerHTML = `<div class="modal-body">
+    <div class="modal-step">Listo</div>
+    <h3>Tu consulta</h3>
+    <div class="summary">
+      <strong>${s.name}</strong><br>
+      ${s.courses ? course.title + '<br>' : ''}
+      Nivel: ${level.label}
+    </div>
+    <div class="modal-actions">
+      <a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(msg)}">Consultar por WhatsApp</a>
+      <button class="link-back" type="button" data-back>← Cambiar</button>
+    </div>
+    <p class="hint">Se abre WhatsApp con el mensaje ya escrito; solo tenés que enviarlo.</p>
+  </div>`;
+}
+
+function openCourse(key) {
+  state = { kind: 'course', sport: key, course: null, level: null };
+  renderCourse();
+  dlg.showModal();
+}
+
+/* ---- Trips ---- */
+function renderTrip() {
+  const t = TRIPS[state.trip];
+  const base = `Hola, estoy interesado en el trip a ${t.name}`;
+  const msg = state.tripSport ? `${base} para hacer ${state.tripSport}.` : `${base}.`;
+  const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.mapQuery)}`;
+
+  body.innerHTML = `
+    <div class="trip-hero"><img src="${t.img}" alt="${t.name}" /></div>
+    <div class="modal-body">
+      <h3>${t.name}</h3>
+      <p class="trip-place">📍 ${t.place} · <a href="${map}" target="_blank" rel="noopener">Ver en el mapa</a></p>
+      <p class="modal-sub">${t.intro}</p>
+      <h4>Deportes que podés hacer</h4>
+      <div class="chips">
+        ${t.sports.map(sp => `<button class="chip" type="button" data-trip-sport="${sp}" aria-pressed="${state.tripSport === sp}">${sp}</button>`).join('')}
+      </div>
+      <p class="hint">Tocá un deporte si ya sabés cuál querés; se agrega a tu mensaje.</p>
+      <h4>Qué incluye</h4>
+      <ul class="includes">${t.includes.map(i => `<li>${i}</li>`).join('')}</ul>
+      <div class="modal-actions">
+        <a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(msg)}">Consultar este trip</a>
+      </div>
+    </div>`;
+}
+
+function openTrip(key) {
+  state = { kind: 'trip', trip: key, tripSport: null };
+  renderTrip();
+  dlg.showModal();
+  dlg.scrollTop = 0;
+}
+
+/* ---- Eventos ---- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('button, [data-course], [data-trip]');
+  if (!t) return;
+
+  if (t.dataset.course) return openCourse(t.dataset.course);
+  if (t.dataset.trip) return openTrip(t.dataset.trip);
+
+  if (t.dataset.pickCourse) { state.course = t.dataset.pickCourse; return renderCourse(); }
+  if (t.dataset.pickLevel)  { state.level = t.dataset.pickLevel;   return renderCourse(); }
+  if ('back' in t.dataset) {
+    if (state.level) state.level = null; else state.course = null;
+    return renderCourse();
+  }
+  if (t.dataset.tripSport) {
+    state.tripSport = state.tripSport === t.dataset.tripSport ? null : t.dataset.tripSport;
+    return renderTrip();
+  }
 });
 </script>
 </body>
