@@ -74,26 +74,24 @@ ul{list-style:none; margin:0; padding:0;}
   position:relative; min-height:88vh; display:flex; flex-direction:column;
   align-items:center; justify-content:center; text-align:center;
   padding:60px 24px 100px; overflow:hidden;
-  background:linear-gradient(180deg,#f9f7f3 0%, #efe9df 55%, #e3d9c8 100%);
 }
-.hero-bg{position:absolute; inset:0; z-index:0; opacity:.5;}
-.hero-bg svg{width:100%; height:100%;}
-.turbine-tower{fill:#d8ccb8;}
-.turbine-blades{fill:#d8ccb8;}
-.turbine-blades{animation:spin 14s linear infinite;}
-.turbine-blades--2{animation-duration:18s; animation-direction:reverse;}
-.turbine-blades--3{animation-duration:11s;}
-@keyframes spin{from{transform:rotate(0deg);} to{transform:rotate(360deg);}}
+.hero-bg{position:absolute; inset:0; z-index:0;}
+.hero-bg img{width:100%; height:100%; object-fit:cover;}
+.hero-bg::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(31,36,32,.35) 0%, rgba(31,36,32,.15) 45%, rgba(31,36,32,.55) 100%);
+}
 
-.hero-tag{position:relative; z-index:1; font-size:1rem; color:var(--brown); margin-bottom:28px; font-weight:600;}
-.hero-title{position:relative; z-index:1; font-size:clamp(1.6rem,4vw,2.6rem); color:var(--ink); line-height:1.25;}
+.hero-tag{position:relative; z-index:1; font-size:1rem; color:var(--white); margin-bottom:28px; font-weight:600; text-shadow:0 1px 6px rgba(0,0,0,.4);}
+.hero-title{position:relative; z-index:1; font-size:clamp(1.6rem,4vw,2.6rem); color:var(--white); line-height:1.25; text-shadow:0 1px 10px rgba(0,0,0,.4);}
 .hero-huge{
   display:inline-block; margin-top:10px;
   font-size:clamp(3.2rem,11vw,8rem); font-weight:700; letter-spacing:.04em;
-  color:var(--brown);
-  -webkit-text-stroke:1px var(--brown);
+  color:var(--sand);
+  -webkit-text-stroke:1px var(--ink);
 }
-.hero-cta{position:relative; z-index:1; margin-top:46px;}
+.hero-cta{position:relative; z-index:1; margin-top:46px; border-color:var(--white); color:var(--white);}
+.hero-cta:hover{background:var(--white); color:var(--ink);}
 .btn{
   display:inline-block; padding:14px 34px; border-radius:30px; font-weight:600;
   font-family:var(--font-body); font-size:.95rem; cursor:pointer; border:1px solid var(--ink);
@@ -135,11 +133,13 @@ ul{list-style:none; margin:0; padding:0;}
 .card h3{font-size:1.25rem; margin-bottom:8px; color:var(--ink);}
 .card p{margin:0; color:#5b5848; font-size:.95rem; line-height:1.5;}
 
-.card-grid--trips .card--trip{padding:0; overflow:hidden;}
-.card-image{height:160px; background:linear-gradient(135deg,var(--sand),var(--brown-light));}
-.card--trip h3,.card--trip p{padding-left:24px; padding-right:24px;}
-.card--trip h3{margin-top:20px;}
-.card--trip p{margin-bottom:24px;}
+.card--photo{padding:0; overflow:hidden;}
+.card-image{height:170px; overflow:hidden;}
+.card-image img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s;}
+.card--photo:hover .card-image img{transform:scale(1.06);}
+.card--photo h3,.card--photo p{padding-left:24px; padding-right:24px;}
+.card--photo h3{margin-top:20px;}
+.card--photo p{margin-bottom:24px;}
 
 .contact-block{margin-top:10px;}
 .contact-block h3{font-size:1.2rem; margin-bottom:14px;}
@@ -202,26 +202,7 @@ ul{list-style:none; margin:0; padding:0;}
   <!-- HERO / INICIO -->
   <section class="hero">
     <div class="hero-bg" aria-hidden="true">
-      <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice">
-        <polygon points="120,500 150,120 180,500" class="turbine-tower"/>
-        <g class="turbine-blades" style="transform-origin:150px 120px;">
-          <polygon points="150,120 150,40 158,120"/>
-          <polygon points="150,120 210,150 150,128"/>
-          <polygon points="150,120 95,155 150,128" transform="rotate(130 150 120)"/>
-        </g>
-        <polygon points="420,500 448,180 476,500" class="turbine-tower turbine-tower--2"/>
-        <g class="turbine-blades turbine-blades--2" style="transform-origin:448px 180px;">
-          <polygon points="448,180 448,110 455,180"/>
-          <polygon points="448,180 500,205 448,187" transform="rotate(100 448 180)"/>
-          <polygon points="448,180 398,210 448,187" transform="rotate(230 448 180)"/>
-        </g>
-        <polygon points="820,500 850,90 880,500" class="turbine-tower turbine-tower--3"/>
-        <g class="turbine-blades turbine-blades--3" style="transform-origin:850px 90px;">
-          <polygon points="850,90 850,10 858,90"/>
-          <polygon points="850,90 905,118 850,98" transform="rotate(60 850 90)"/>
-          <polygon points="850,90 797,122 850,98" transform="rotate(190 850 90)"/>
-        </g>
-      </svg>
+      <img src="img/hero.jpg" alt="" />
     </div>
 
     <p class="hero-tag">Creamos riders. Construimos experiencias. Inspiramos aventuras.</p>
@@ -247,28 +228,61 @@ ul{list-style:none; margin:0; padding:0;}
     </a>
   </section>
 
+  <!-- SOMOS MAD WIND -->
+  <section class="section">
+    <div class="section-inner section-inner--narrow">
+      <span class="eyebrow">Quiénes somos</span>
+      <h2>Somos Mad Wind</h2>
+      <p class="section-lead">En Mad Wind Experience creemos que el kitesurf, windfoil y parapente son mucho más que deportes extremos: son libertad, aventura y conexión con la naturaleza.</p>
+      <p class="section-lead">Creamos experiencias para todos los niveles, combinando enseñanza profesional, seguridad y diversión en destinos únicos. Porque creemos que cada sesión es una oportunidad para descubrir algo nuevo en vos.</p>
+
+      <div class="card-grid">
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/instructores.jpg" alt="Instructor enseñando kitesurf" /></div>
+          <h3>Instructores profesionales</h3>
+          <p>Equipo certificado, enfocado en tu seguridad y en que progreses a tu ritmo.</p>
+        </article>
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/destinos.jpg" alt="Spot de windfoil en Cumbuco" /></div>
+          <h3>Hermosos destinos</h3>
+          <p>Los mejores spots de viento en Cumbuco, Brasil, y alrededores.</p>
+        </article>
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/recuerdos.jpg" alt="Grupo disfrutando en la playa" /></div>
+          <h3>Recuerdos geniales</h3>
+          <p>Cada sesión, una experiencia para llevarte y repetir.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- CLASES Y DOWNWINDS -->
   <section id="clases" class="section section-alt">
     <div class="section-inner">
       <span class="eyebrow">Aprendé con nosotros</span>
       <h2>Clases y Downwinds</h2>
-      <p class="section-lead">Texto placeholder — acá va la descripción real de las clases (niveles, duración, equipo incluido) y de los downwinds que ofrece Mad Wind.</p>
+      <p class="section-lead">Cursos para todo el mundo: kitesurf, windfoil y parapente, con instructores profesionales y equipo incluido, pensados para cada nivel.</p>
 
       <div class="card-grid">
-        <article class="card">
-          <div class="card-icon">🏄</div>
-          <h3>Clases iniciación</h3>
-          <p>Placeholder: a quién está dirigida, duración y qué incluye.</p>
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/kitesurf.jpg" alt="Clase de kitesurf, salto" /></div>
+          <h3>Kitesurf</h3>
+          <p>Clases de iniciación y perfeccionamiento en los mejores spots de viento.</p>
         </article>
-        <article class="card">
-          <div class="card-icon">🌬️</div>
-          <h3>Perfeccionamiento</h3>
-          <p>Placeholder: nivel intermedio/avanzado, objetivos de la clase.</p>
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/windfoil.jpg" alt="Windfoil sobre el agua" /></div>
+          <h3>Windfoil</h3>
+          <p>Para quienes ya navegan y quieren subirse a volar sobre el agua.</p>
         </article>
-        <article class="card">
-          <div class="card-icon">🧭</div>
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/parapente.jpg" alt="Parapente sobre las dunas" /></div>
+          <h3>Parapente</h3>
+          <p>Vuelos y clases para vivir el viento desde otra perspectiva.</p>
+        </article>
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/downwinds.jpg" alt="Downwind al atardecer" /></div>
           <h3>Downwinds</h3>
-          <p>Placeholder: recorridos, puntos de encuentro, qué llevar.</p>
+          <p>Recorridos guiados por nuestros instructores en Cumbuco y alrededores.</p>
         </article>
       </div>
     </div>
@@ -279,32 +293,35 @@ ul{list-style:none; margin:0; padding:0;}
     <div class="section-inner">
       <span class="eyebrow">Viví la experiencia</span>
       <h2>Trips</h2>
-      <p class="section-lead">Texto placeholder — acá van los viajes/salidas organizadas por Mad Wind (destinos, fechas, qué incluyen).</p>
+      <p class="section-lead">Cada viaje es 100% personalizado: vos elegís qué querés hacer y nosotros nos encargamos del resto. Coordinamos todo por WhatsApp para que tu experiencia sea única y sin complicaciones.</p>
 
-      <div class="card-grid card-grid--trips">
-        <article class="card card--trip">
-          <div class="card-image" aria-hidden="true"></div>
-          <h3>Destino 1</h3>
-          <p>Placeholder: fecha, duración y breve descripción del trip.</p>
+      <div class="card-grid">
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/trip-lagoa.jpg" alt="Lagoa do Cauipe" /></div>
+          <h3>Lagoa do Cauipe</h3>
+          <p>Spot clásico de kitesurf cerca de Cumbuco, ideal para todos los niveles.</p>
         </article>
-        <article class="card card--trip">
-          <div class="card-image" aria-hidden="true"></div>
-          <h3>Destino 2</h3>
-          <p>Placeholder: fecha, duración y breve descripción del trip.</p>
+        <article class="card card--photo">
+          <div class="card-image"><img src="img/trip-canoa.jpg" alt="Dunas de Canoa Quebrada" /></div>
+          <h3>Canoa Quebrada</h3>
+          <p>Downwind entre dunas y playas, una de las rutas más lindas de la región.</p>
         </article>
       </div>
+
+      <p class="section-lead" style="margin-top:36px;">Precios desde 910 U$D — consultanos por WhatsApp para armar tu trip a medida.</p>
     </div>
   </section>
 
   <!-- ACERCA DE -->
   <section id="acerca" class="section section-alt">
     <div class="section-inner section-inner--narrow">
-      <span class="eyebrow">Quiénes somos</span>
-      <h2>Acerca de Mad Wind</h2>
-      <p class="section-lead">Texto placeholder — acá va la historia de Mad Wind, el equipo de instructores y lo que los distingue como escuela.</p>
+      <span class="eyebrow">Acerca de</span>
+      <h2>MadWind — Cursos y Trips</h2>
+      <p class="section-lead">Apasionados por los deportes de viento y la aventura, organizamos clases y trips de kitesurf, parapente y wingfoil en los mejores spots de Cumbuco, Brasil. Nuestro objetivo es que disfrutes al máximo.</p>
+      <p class="section-lead">Cada viaje es 100% personalizado: vos elegís qué querés hacer y nosotros nos encargamos del resto. Coordinamos juntos por WhatsApp para que tu experiencia sea única y sin complicaciones.</p>
 
       <div class="contact-block">
-        <h3>Contacto</h3>
+        <h3>Contactanos</h3>
         <ul class="contact-list">
           <li><a href="https://wa.me/5492612195320" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="#">Instagram</a></li>
@@ -318,6 +335,7 @@ ul{list-style:none; margin:0; padding:0;}
 </main>
 
 <footer class="site-footer">
+  <p>MadWind — Cursos y Trips</p>
   <p>© <span id="year"></span> Mad Wind Experience. Todos los derechos reservados.</p>
 </footer>
 
