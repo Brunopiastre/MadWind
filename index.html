@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mad Wind Experience</title>
+<meta name="description" content="Mad Wind Experience — Clases, downwinds y trips de kitesurf. Creamos riders, construimos experiencias, inspiramos aventuras." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f4f1ec;
+  --cream-2:#eceae3;
+  --ink:#1f2420;
+  --brown:#6a4a32;
+  --brown-light:#a9754c;
+  --sand:#cdb79a;
+  --white:#ffffff;
+  --radius:14px;
+  --max:1180px;
+  --font-head:"Barlow Condensed", sans-serif;
+  --font-body:"Barlow", sans-serif;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--cream);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit; text-decoration:none;}
+img{max-width:100%; display:block;}
+h1,h2,h3{font-family:var(--font-head); letter-spacing:.02em; margin:0;}
+ul{list-style:none; margin:0; padding:0;}
+
+/* ---------- HEADER ---------- */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(244,241,236,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.header-inner{
+  max-width:var(--max); margin:0 auto; padding:14px 24px;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.logo{display:flex; align-items:center; gap:8px; font-family:var(--font-head); font-size:1.4rem; color:var(--brown);}
+.logo strong{color:var(--ink);}
+.logo-mark{color:var(--brown);}
+
+.main-nav{display:flex; gap:8px; flex:1; justify-content:center;}
+.main-nav a{
+  padding:10px 18px; border-radius:30px; font-size:.95rem; font-weight:600;
+  color:var(--ink); border:1px solid transparent; transition:.2s;
+  white-space:nowrap;
+}
+.main-nav a:hover{border-color:var(--brown-light);}
+.main-nav a.active{background:var(--brown); color:var(--white);}
+
+.header-actions{display:flex; align-items:center; gap:14px;}
+.lang-select{
+  display:flex; align-items:center; gap:6px; background:var(--white);
+  border:1px solid rgba(0,0,0,.08); border-radius:30px; padding:8px 12px; cursor:pointer;
+}
+.menu-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+.menu-toggle span{width:22px; height:2px; background:var(--ink);}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative; min-height:88vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center;
+  padding:60px 24px 100px; overflow:hidden;
+  background:linear-gradient(180deg,#f9f7f3 0%, #efe9df 55%, #e3d9c8 100%);
+}
+.hero-bg{position:absolute; inset:0; z-index:0; opacity:.5;}
+.hero-bg svg{width:100%; height:100%;}
+.turbine-tower{fill:#d8ccb8;}
+.turbine-blades{fill:#d8ccb8;}
+.turbine-blades{animation:spin 14s linear infinite;}
+.turbine-blades--2{animation-duration:18s; animation-direction:reverse;}
+.turbine-blades--3{animation-duration:11s;}
+@keyframes spin{from{transform:rotate(0deg);} to{transform:rotate(360deg);}}
+
+.hero-tag{position:relative; z-index:1; font-size:1rem; color:var(--brown); margin-bottom:28px; font-weight:600;}
+.hero-title{position:relative; z-index:1; font-size:clamp(1.6rem,4vw,2.6rem); color:var(--ink); line-height:1.25;}
+.hero-huge{
+  display:inline-block; margin-top:10px;
+  font-size:clamp(3.2rem,11vw,8rem); font-weight:700; letter-spacing:.04em;
+  color:var(--brown);
+  -webkit-text-stroke:1px var(--brown);
+}
+.hero-cta{position:relative; z-index:1; margin-top:46px;}
+.btn{
+  display:inline-block; padding:14px 34px; border-radius:30px; font-weight:600;
+  font-family:var(--font-body); font-size:.95rem; cursor:pointer; border:1px solid var(--ink);
+  transition:.2s;
+}
+.btn-ghost{background:transparent; color:var(--ink);}
+.btn-ghost:hover{background:var(--ink); color:var(--white);}
+
+.hero-social{position:relative; z-index:1; margin-top:40px; display:flex; gap:18px;}
+.hero-social a{
+  width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  background:var(--white); border:1px solid rgba(0,0,0,.08); color:var(--brown); transition:.2s;
+}
+.hero-social a:hover{background:var(--brown); color:var(--white);}
+
+.whatsapp-float{
+  position:fixed; right:22px; bottom:22px; z-index:60;
+  width:56px; height:56px; border-radius:50%; background:#25D366;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+
+/* ---------- SECTIONS ---------- */
+.section{padding:90px 24px;}
+.section-alt{background:var(--cream-2);}
+.section-inner{max-width:var(--max); margin:0 auto; text-align:center;}
+.section-inner--narrow{max-width:760px;}
+.eyebrow{display:block; color:var(--brown-light); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.8rem; margin-bottom:10px;}
+.section h2{font-size:clamp(2rem,4vw,2.8rem); color:var(--ink); margin-bottom:18px;}
+.section-lead{max-width:640px; margin:0 auto 50px; color:#4a473f; font-size:1.05rem; line-height:1.6;}
+
+.card-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; text-align:left;}
+.card{
+  background:var(--white); border-radius:var(--radius); padding:28px;
+  border:1px solid rgba(0,0,0,.06); transition:.2s;
+}
+.card:hover{transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,.08);}
+.card-icon{font-size:1.8rem; margin-bottom:14px;}
+.card h3{font-size:1.25rem; margin-bottom:8px; color:var(--ink);}
+.card p{margin:0; color:#5b5848; font-size:.95rem; line-height:1.5;}
+
+.card-grid--trips .card--trip{padding:0; overflow:hidden;}
+.card-image{height:160px; background:linear-gradient(135deg,var(--sand),var(--brown-light));}
+.card--trip h3,.card--trip p{padding-left:24px; padding-right:24px;}
+.card--trip h3{margin-top:20px;}
+.card--trip p{margin-bottom:24px;}
+
+.contact-block{margin-top:10px;}
+.contact-block h3{font-size:1.2rem; margin-bottom:14px;}
+.contact-list{display:flex; gap:16px; flex-wrap:wrap; justify-content:center;}
+.contact-list a{
+  padding:10px 20px; border-radius:30px; border:1px solid var(--ink); font-weight:600; font-size:.9rem;
+  transition:.2s;
+}
+.contact-list a:hover{background:var(--ink); color:var(--white);}
+
+/* ---------- FOOTER ---------- */
+.site-footer{text-align:center; padding:28px 24px; font-size:.85rem; color:#7a7668; background:var(--cream-2); border-top:1px solid rgba(0,0,0,.06);}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:860px){
+  .main-nav{
+    position:fixed; inset:64px 0 auto 0; background:var(--cream);
+    flex-direction:column; padding:20px 24px; gap:10px;
+    transform:translateY(-120%); transition:transform .25s; border-bottom:1px solid rgba(0,0,0,.08);
+  }
+  .main-nav.open{transform:translateY(0);}
+  .main-nav a{text-align:center;}
+  .menu-toggle{display:flex;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 48 48" width="34" height="34" aria-hidden="true">
+        <path d="M24 4c-4 6-10 8-10 16 0 5.5 4.5 10 10 10s10-4.5 10-10c0-8-6-10-10-16z" fill="currentColor"/>
+        <path d="M24 30v14M24 44c-4 0-7-2-7-2M24 44c4 0 7-2 7-2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>MAD<strong>WIND</strong></span>
+    </a>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="#top" class="active">Inicio</a>
+      <a href="#clases">Clases y Downwinds</a>
+      <a href="#trips">Trips</a>
+      <a href="#acerca">Acerca de</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="lang-select" type="button" aria-label="Seleccionar idioma">
+        <span class="flag">🇦🇷</span>
+        <svg width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO / INICIO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMax slice">
+        <polygon points="120,500 150,120 180,500" class="turbine-tower"/>
+        <g class="turbine-blades" style="transform-origin:150px 120px;">
+          <polygon points="150,120 150,40 158,120"/>
+          <polygon points="150,120 210,150 150,128"/>
+          <polygon points="150,120 95,155 150,128" transform="rotate(130 150 120)"/>
+        </g>
+        <polygon points="420,500 448,180 476,500" class="turbine-tower turbine-tower--2"/>
+        <g class="turbine-blades turbine-blades--2" style="transform-origin:448px 180px;">
+          <polygon points="448,180 448,110 455,180"/>
+          <polygon points="448,180 500,205 448,187" transform="rotate(100 448 180)"/>
+          <polygon points="448,180 398,210 448,187" transform="rotate(230 448 180)"/>
+        </g>
+        <polygon points="820,500 850,90 880,500" class="turbine-tower turbine-tower--3"/>
+        <g class="turbine-blades turbine-blades--3" style="transform-origin:850px 90px;">
+          <polygon points="850,90 850,10 858,90"/>
+          <polygon points="850,90 905,118 850,98" transform="rotate(60 850 90)"/>
+          <polygon points="850,90 797,122 850,98" transform="rotate(190 850 90)"/>
+        </g>
+      </svg>
+    </div>
+
+    <p class="hero-tag">Creamos riders. Construimos experiencias. Inspiramos aventuras.</p>
+
+    <h1 class="hero-title">
+      VUELA A TU PRÓXIMA AVENTURA DE<br/>
+      <span class="hero-huge">VIENTO</span>
+    </h1>
+
+    <a href="#clases" class="btn btn-ghost hero-cta">Ver más</a>
+
+    <div class="hero-social">
+      <a href="#" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H8v4h2v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>
+      </a>
+    </div>
+
+    <a class="whatsapp-float" href="https://wa.me/5492612195320" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.6 14.3c-.2.6-1.3 1.2-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.8 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.3.9 1.4 1.9 2.3 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1.2.1 1.6.8 1.9 1 .3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg>
+    </a>
+  </section>
+
+  <!-- CLASES Y DOWNWINDS -->
+  <section id="clases" class="section section-alt">
+    <div class="section-inner">
+      <span class="eyebrow">Aprendé con nosotros</span>
+      <h2>Clases y Downwinds</h2>
+      <p class="section-lead">Texto placeholder — acá va la descripción real de las clases (niveles, duración, equipo incluido) y de los downwinds que ofrece Mad Wind.</p>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-icon">🏄</div>
+          <h3>Clases iniciación</h3>
+          <p>Placeholder: a quién está dirigida, duración y qué incluye.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🌬️</div>
+          <h3>Perfeccionamiento</h3>
+          <p>Placeholder: nivel intermedio/avanzado, objetivos de la clase.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🧭</div>
+          <h3>Downwinds</h3>
+          <p>Placeholder: recorridos, puntos de encuentro, qué llevar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIPS -->
+  <section id="trips" class="section">
+    <div class="section-inner">
+      <span class="eyebrow">Viví la experiencia</span>
+      <h2>Trips</h2>
+      <p class="section-lead">Texto placeholder — acá van los viajes/salidas organizadas por Mad Wind (destinos, fechas, qué incluyen).</p>
+
+      <div class="card-grid card-grid--trips">
+        <article class="card card--trip">
+          <div class="card-image" aria-hidden="true"></div>
+          <h3>Destino 1</h3>
+          <p>Placeholder: fecha, duración y breve descripción del trip.</p>
+        </article>
+        <article class="card card--trip">
+          <div class="card-image" aria-hidden="true"></div>
+          <h3>Destino 2</h3>
+          <p>Placeholder: fecha, duración y breve descripción del trip.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACERCA DE -->
+  <section id="acerca" class="section section-alt">
+    <div class="section-inner section-inner--narrow">
+      <span class="eyebrow">Quiénes somos</span>
+      <h2>Acerca de Mad Wind</h2>
+      <p class="section-lead">Texto placeholder — acá va la historia de Mad Wind, el equipo de instructores y lo que los distingue como escuela.</p>
+
+      <div class="contact-block">
+        <h3>Contacto</h3>
+        <ul class="contact-list">
+          <li><a href="https://wa.me/5492612195320" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="mailto:info@madwind.net">info@madwind.net</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> Mad Wind Experience. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const toggle = document.getElementById('menu-toggle');
+const nav = document.getElementById('main-nav');
+
+toggle?.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', String(isOpen));
+});
+
+nav?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+  });
+});
+</script>
+</body>
+</html>
