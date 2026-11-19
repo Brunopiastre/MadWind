@@ -756,10 +756,14 @@ const LANGS = [
   const getCookie = () => (document.cookie.match(/(?:^|;\s*)googtrans=\/[^/]*\/([^;]+)/) || [])[1] || 'es';
   const setCookie = v => {
     const val = v === 'es' ? '' : `/es/${v}`;
-    const exp = v === 'es' ? 'expires=Thu, 01 Jan 1970 00:00:00 GMT;' : '';
-    document.cookie = `googtrans=${val}; path=/; ${exp}`;
-    const host = location.hostname;
-    if (host.includes('.')) document.cookie = `googtrans=${val}; path=/; domain=.${host}; ${exp}`;
+    const exp = v === 'es' ? 'expires=Thu, 01 Jan 1970 00:00:00 GMT; max-age=0;' : '';
+    const parts = location.hostname.split('.');
+    const domains = [''];
+    for (let i = 0; i < parts.length - 1; i++) {
+      const d = parts.slice(i).join('.');
+      domains.push(`domain=${d};`, `domain=.${d};`);
+    }
+    domains.forEach(d => { document.cookie = `googtrans=${val}; path=/; ${d} ${exp}`; });
   };
   const btn = document.getElementById('lang-btn'), menu = document.getElementById('lang-menu'), flag = document.getElementById('lang-flag');
   const cur = getCookie();
